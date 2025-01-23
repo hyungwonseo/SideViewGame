@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rbody;          // Rigidbody2D 형 변수
     float axisH = 0.0f;         // 입력
+    public float speed = 3.0f;         // 속도
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // 속도 갱신하기
-        rbody.velocity = new Vector2(3.0f * axisH, rbody.velocity.y);
+        rbody.velocity = new Vector2(speed * axisH, rbody.velocity.y);
     }
 }
