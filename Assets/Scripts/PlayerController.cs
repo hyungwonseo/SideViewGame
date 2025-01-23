@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     {
         // 수평 방형으로의 입력 확인
         axisH = Input.GetAxisRaw("Horizontal");
-        Debug.Log(axisH);
     }
 
     void FixedUpdate()
