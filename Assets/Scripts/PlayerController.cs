@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         else if (axisH < 0.0f)
         {
             // 왼쪽 이동
-            transform.localScale = new Vector2(-1, 1);   // 左右反転させる
+            transform.localScale = new Vector2(-1, 1);
         }
     }
 
