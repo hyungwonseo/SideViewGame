@@ -1,29 +1,40 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rbody;          // Rigidbody2D Çü º¯¼ö
-    float axisH = 0.0f;         // ÀÔ·Â
+    Rigidbody2D rbody;          // Rigidbody2D í˜• ë³€ìˆ˜
+    float axisH = 0.0f;         // ì…ë ¥
 
     // Start is called before the first frame update
     void Start()
     {
-        // Rigidbody2D °¡Á®¿À±â
+        // Rigidbody2D ê°€ì ¸ì˜¤ê¸°
         rbody = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ¼öÆò ¹æÇüÀ¸·ÎÀÇ ÀÔ·Â È®ÀÎ
+        // ìˆ˜í‰ ë°©í˜•ìœ¼ë¡œì˜ ì…ë ¥ í™•ì¸
         axisH = Input.GetAxisRaw("Horizontal");
+        // ë°©í–¥ ì¡°ì ˆ
+        if (axisH > 0.0f)
+        {
+            // ì˜¤ë¥¸ìª½ ì´ë™
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (axisH < 0.0f)
+        {
+            // ì™¼ìª½ ì´ë™
+            transform.localScale = new Vector2(-1, 1);   // å·¦å³åè»¢ã•ã›ã‚‹
+        }
     }
 
     void FixedUpdate()
     {
-        // ¼Óµµ °»½ÅÇÏ±â
+        // ì†ë„ ê°±ì‹ í•˜ê¸°
         rbody.velocity = new Vector2(3.0f * axisH, rbody.velocity.y);
     }
 }
