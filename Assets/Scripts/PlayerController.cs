@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
     public void Goal()
     {
         animator.Play(goalAnime);
-        gameState = "gameclear";
         GameStop(); // 게임 중지
     }
     // 게임 오버
@@ -137,7 +136,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.Play(deadAnime);
 
-        gameState = "gameover";
         GameStop(); // 게임 중지
         // =====================
         // 게임 오버 연출
