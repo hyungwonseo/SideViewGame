@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     string nowAnime = "";
     string oldAnime = "";
 
+    public static string gameState = "playing"; // 게임 상태
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +34,18 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         nowAnime = stopAnime;
         oldAnime = stopAnime;
+
+        gameState = "playing"; // 게임 중
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameState != "playing")
+        {
+            return;
+        }
+
         // 수평 방형으로의 입력 확인
         axisH = Input.GetAxisRaw("Horizontal");
         // 방향 조절
@@ -60,6 +69,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gameState != "playing")
+        {
+            return;
+        }
+
         // 착지 판정
         onGround = Physics2D.Linecast(transform.position,
                                       transform.position - (transform.up * 0.1f),
@@ -129,19 +143,21 @@ public class PlayerController : MonoBehaviour
     public void Goal()
     {
         animator.Play(goalAnime);
+        gameState = "gameclear";
         GameStop(); // 게임 중지
     }
     // 게임 오버
     public void GameOver()
     {
         animator.Play(deadAnime);
-
+        gameState = "gameover";
         GameStop(); // 게임 중지
         // =====================
         // 게임 오버 연출
         // =====================
         // 플레이어의 충돌 판정 비활성
-        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         // 플레이어를 위로 튀어 오르게 하는 연출
         rbody.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
     }
