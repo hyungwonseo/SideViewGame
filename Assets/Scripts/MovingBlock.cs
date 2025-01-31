@@ -7,7 +7,7 @@ public class MovingBlock : MonoBehaviour
     public float moveX = 0.0f;          //X이동거리
     public float moveY = 0.0f;          //Y이동거리
     public float times = 0.0f;          //시간
-    public float weight = 0.0f;         //정지 시간
+    public float wait = 0.0f;         //정지 시간
     public bool isMoveWhenOn = false;   //올라 탓을 때 움직이기
 
     public bool isCanMove = true;       //움직임
@@ -23,10 +23,10 @@ public class MovingBlock : MonoBehaviour
         defPos = transform.position;
         //１프레임에 이동하는 시간 
         float timestep = Time.fixedDeltaTime;
-        //１ 프레임의 X 이동 값
-        perDX = moveX / (1.0f / timestep * times);
-        //１ 프레임의 Y 이동 값
-        perDY = moveY / (1.0f / timestep * times);
+        //１ 프레임당 X 이동 거리
+        perDX = (moveX / times) * timestep;
+        //１ 프레임당 Y 이동 거리
+        perDY = (moveY / times) * timestep;
 
         if (isMoveWhenOn)
         {
@@ -97,7 +97,7 @@ public class MovingBlock : MonoBehaviour
                 if (isMoveWhenOn == false)
                 {
                     //올라 탓을 때 움직이는 값이 꺼져있는 경우
-                    Invoke("Move", weight);  // weight 만큼 지연 후 다시 이동
+                    Invoke("Move", wait);  // weight 만큼 지연 후 다시 이동
                 }
             }
         }
