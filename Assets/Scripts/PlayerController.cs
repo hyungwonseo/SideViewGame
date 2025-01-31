@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public static string gameState = "playing"; // 게임 상태
 
+    public int score = 0; // 점수
+
     // Start is called before the first frame update
     void Start()
     {
@@ -137,6 +139,14 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "Dead")
         {
             GameOver();     // 게임 오버
+        }
+        else if (collision.gameObject.tag == "ScoreItem")
+        {
+            ItemData item = collision.gameObject.GetComponent<ItemData>();
+            // 점수획득
+            score = item.value;
+            // 아이템제거
+            Destroy(collision.gameObject);
         }
     }
     // 골
