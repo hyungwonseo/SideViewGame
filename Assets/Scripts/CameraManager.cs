@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
     public float topLimit = 0.0f;       // 위 스크롤 제한 
     public float bottomLimit = 0.0f;    // 아래 스크롤 제한
 
+    public GameObject subScreen;        // 서브 스크린
+
     GameObject player;
 
     // Start is called before the first frame update
@@ -52,7 +54,14 @@ public class CameraManager : MonoBehaviour
             Vector3 v3 = new Vector3(x, y, z);
             transform.position = v3;
 
-            
+            // 서브 스크린 스크롤
+            if (subScreen != null)
+            {
+                y = subScreen.transform.position.y;
+                z = subScreen.transform.position.z;
+                Vector3 v = new Vector3(x / 2.0f, y, z);
+                subScreen.transform.position = v;
+            }
         }
     }
 }
