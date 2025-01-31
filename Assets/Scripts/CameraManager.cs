@@ -20,7 +20,6 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GameObject player = GameObject.FindGameObjectWithTag("Player"); // 플레이어 찾기
         if (player != null)
         {
             // 카메라의 좌표 갱신
