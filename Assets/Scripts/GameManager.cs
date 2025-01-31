@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject nextButton;       // NEXT 버튼
     Image titleImage;                   // 이미지를 표시하고있는 Image 컴포넌트
 
+    // +++ 점수 추가 +++
+    public GameObject scoreText;        // 점수 텍스트  
+    public static int totalScore;       // 점수 총합
+    public int stageScore = 0;          // 스테이지 점수
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,9 @@ public class GameManager : MonoBehaviour
         Invoke("InactiveImage", 1.0f);
         // 버튼(패널)을 숨기기
         panel.SetActive(false);
+
+        // +++ 점수 추가 +++
+        UpdateScore();
     }
 
     // Update is called once per frame
@@ -35,6 +43,11 @@ public class GameManager : MonoBehaviour
             bt.interactable = false;
             mainImage.GetComponent<Image>().sprite = gameClearSpr;
             PlayerController.gameState = "gameend";
+
+            // +++ 점수 추가 +++
+            totalScore += stageScore;
+            stageScore = 0;
+            UpdateScore();// 점수 갱신
         }
         else if (PlayerController.gameState == "gameover")
         {
@@ -50,12 +63,28 @@ public class GameManager : MonoBehaviour
         else if (PlayerController.gameState == "playing")
         {
             // 게임 중
-
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            // PlayerController 가져오기
+            PlayerController playerCnt = player.GetComponent<PlayerController>();
+            // +++ 점수 추가 +++
+            if (playerCnt.score != 0)
+            {
+                stageScore += playerCnt.score;
+                playerCnt.score = 0;
+                UpdateScore();
+            }
         }
     }
     // 이미지 숨기기
     void InactiveImage()
     {
         mainImage.SetActive(false);
+    }
+
+    // +++ 점수 추가 +++
+    void UpdateScore()
+    {
+        int score = stageScore + totalScore;
+        scoreText.GetComponent<Text>().text = score.ToString();
     }
 }
