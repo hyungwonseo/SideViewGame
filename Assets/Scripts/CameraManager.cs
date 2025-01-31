@@ -59,7 +59,7 @@ public class CameraManager : MonoBehaviour
             {
                 y = subScreen.transform.position.y;
                 z = subScreen.transform.position.z;
-                Vector3 v = new Vector3(x / 2.0f, y, z);
+                Vector3 v = new Vector3(x * 0.5f, y, z);
                 subScreen.transform.position = v;
             }
         }
