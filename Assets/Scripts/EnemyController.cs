@@ -28,15 +28,13 @@ public class EnemyController : MonoBehaviour
             if (transform.position.x < defPos.x - (range / 2))
             {
                 direction = "right";
-                transform.localScale = new Vector2(-1, 1);// 방향 변경
-                if (transform.position.x > defPos.x + (range / 2))
-                {
-                    direction = "left";
-                    transform.localScale = new Vector2(1, 1);// 방향 변경
-                }
+                transform.localScale = new Vector2(-1, 1);// 방향 변경                
             }
-
-
+            if (transform.position.x > defPos.x + (range / 2))
+            {
+                direction = "left";
+                transform.localScale = new Vector2(1, 1);// 방향 변경
+            }
         }
     }
 
