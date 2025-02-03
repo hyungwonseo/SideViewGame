@@ -1029,6 +1029,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834632987}
+  - component: {fileID: 834632988}
   m_Layer: 0
   m_Name: wallBlock
   m_TagString: Untagged
@@ -1053,6 +1054,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834632988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834632986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da74572805214e4bab2128b921d189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveX: 0
+  moveY: 4
+  times: 2
+  wait: 3
+  isMoveWhenOn: 0
+  isCanMove: 0
 --- !u!1001 &915169332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2954,6 +2973,7 @@ GameObject:
   - component: {fileID: 2012484019}
   - component: {fileID: 2012484018}
   - component: {fileID: 2012484020}
+  - component: {fileID: 2012484021}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -3054,6 +3074,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2012484021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012484017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec56cf293dffe746aec4c2beeaf926c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMoveBlock: {fileID: 834632986}
+  imageOn: {fileID: 21300000, guid: 7f0a869e78ef744e8811ec1a6faefb10, type: 3}
+  imageOff: {fileID: 21300000, guid: 43dbf35e558134127a49d18a901847b8, type: 3}
+  on: 0
+  playerCollision: 0
 --- !u!1 &2020677428
 GameObject:
   m_ObjectHideFlags: 0

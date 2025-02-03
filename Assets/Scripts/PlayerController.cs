@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             // 속도 갱신
             rbody.velocity = new Vector2(speed * axisH, rbody.velocity.y);
         }
-        Debug.Log(" 점프! " + onGround + goJump);
+        //Debug.Log(" 점프! " + onGround + goJump);
         if (onGround && goJump)
         {
             // 지면 위에서 점프키 눌림
